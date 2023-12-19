@@ -1,10 +1,10 @@
 [package]
 name = "easiergi"
-version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+version = "0.0.1"
+description = "easier to play genshin impact"
+authors = ["sux"]
+license = "MIT"
+repository = "https://github.com/supersux/EasierGI"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

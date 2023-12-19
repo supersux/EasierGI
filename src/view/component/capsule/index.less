@@ -1,0 +1,48 @@
+@icon-size: 24px;
+@space-atom: 4px;
+@space-atom-double: @space-atom * 2;
+@checked-color:rgba(0,0,0,0.38);
+
+.box {
+    display: flex;
+    height: 28px;
+    align-items: center;
+    border-radius: 99px;
+    border: thin solid @checked-color;
+
+    .icon {
+        width: @icon-size;
+        height: @icon-size;
+    }
+
+    .checked {
+        background-color: @checked-color;
+    }
+    
+    .icon-left {
+        .icon();
+        padding: 2px 2px 2px @space-atom-double;
+    }
+
+    .icon-right {
+        .icon();
+        padding: 2px @space-atom-double 2px 2px;
+    }
+
+    .icon-left:active {
+        .checked();
+        border-top-left-radius: 99px;
+        border-bottom-left-radius: 99px;
+    }
+
+    .icon-right:active {
+        .checked();
+        border-top-right-radius: 99px;
+        border-bottom-right-radius: 99px;
+    }
+
+    .split {
+        height: @icon-size - @space-atom;
+        border:1px solid @checked-color;
+    }
+}

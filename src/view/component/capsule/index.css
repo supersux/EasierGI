@@ -1,0 +1,38 @@
+.box {
+  display: flex;
+  height: 28px;
+  align-items: center;
+  border-radius: 99px;
+  border: thin solid rgba(0, 0, 0, 0.38);
+}
+.box .icon {
+  width: 24px;
+  height: 24px;
+}
+.box .checked {
+  background-color: rgba(0, 0, 0, 0.38);
+}
+.box .icon-left {
+  width: 24px;
+  height: 24px;
+  padding: 2px 2px 2px 8px;
+}
+.box .icon-right {
+  width: 24px;
+  height: 24px;
+  padding: 2px 8px 2px 2px;
+}
+.box .icon-left:active {
+  background-color: rgba(0, 0, 0, 0.38);
+  border-top-left-radius: 99px;
+  border-bottom-left-radius: 99px;
+}
+.box .icon-right:active {
+  background-color: rgba(0, 0, 0, 0.38);
+  border-top-right-radius: 99px;
+  border-bottom-right-radius: 99px;
+}
+.box .split {
+  height: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.38);
+}

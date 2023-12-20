@@ -1,11 +1,17 @@
+html, body, #app{
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
+  /* line-height: 24px;
+  font-weight: 400; */
+/* 
   color: #0f0f0f;
-  background-color: #f6f6f6;
+  background-color: #f6f6f6; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,14 +21,12 @@
 }
 
 .container {
-  margin: 0;
-  padding-top: 10vh;
-  
+  margin: 0;  
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  background: url('http://k21vin.gitee.io/front-end-data-visualization/assets/bg01.13dfb262.jpg');
+  width: 100%;
+  height: 100%;
+  background: url('https://img2.wallspic.com/crops/6/3/4/6/7/176436/176436-cheng_se-se_cai-zi_se_de-zi_luo_lan_se-liao_jiu_dian-1920x1080.jpg');
 }
 
 .logo {

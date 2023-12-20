@@ -6,20 +6,20 @@
   border: thin solid rgba(0, 0, 0, 0.38);
 }
 .box .icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 .box .checked {
   background-color: rgba(0, 0, 0, 0.38);
 }
 .box .icon-left {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   padding: 2px 2px 2px 4px;
 }
 .box .icon-right {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   padding: 2px 4px 2px 2px;
 }
 .box .icon-left:active {
@@ -33,6 +33,6 @@
   border-bottom-right-radius: 99px;
 }
 .box .split {
-  height: 16px;
+  height: 12px;
   border: 1px solid rgba(0, 0, 0, 0.38);
 }

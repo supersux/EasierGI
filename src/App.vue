@@ -20,11 +20,14 @@ const showContextMenu = (e) => {
 </script>
 <template>
   <div class="container" @click.right.native="showContextMenu($event)">
-    <h1>Welcome to Tauri111!</h1>
-    <GrowthCard name="珊瑚" />
-    <div style="display:flex; flex-direction: row;">
-      <menuItem style="margin-top:20px;" v-bind:list="items" @selected="selected" />
+    <h1>Welcome to Tauri!</h1>
+    <div style="display: flex;">
+      <GrowthCard name="珊瑚" />
+      <div style="display:flex; flex-direction: row;">
+        <menuItem style="margin-top:20px;" v-bind:list="items" @selected="selected" />
+      </div>
     </div>
+
 
     <!-- <img class="more" src="./assets/more.svg" alt="" /> -->
   </div>

@@ -5,9 +5,9 @@
             <span class="name">{{ name }}</span>
         </div>
         <div class="more">
-            <capsule @turn-left="turnLeft" @turn-right="turnRight"/>
+            <capsule @turn-left="turnLeft" @turn-right="turnRight" />
         </div>
-        
+
         <div class="content">
             <div class="content-column" v-for="item in [[1, 2, 3], [1, 3]]">
                 <div v-for="childItem in item">
@@ -30,6 +30,7 @@
 </style>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import capsule from "../capsule/index.vue"
 console.log(111)
 // 材料类型定义
@@ -40,7 +41,7 @@ console.log(111)
 //     have?: number
 // }
 const name = '珊瑚宫心海'
-const isMultiple = false
+const isMultiple = ref(true)
 const shadowSingle = 'card-single'
 const shadowMultiple = 'card-multiple'
 

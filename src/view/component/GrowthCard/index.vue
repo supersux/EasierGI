@@ -1,11 +1,11 @@
 <template>
     <div class="card" v-bind:class="[isMultiple ? shadowMultiple : shadowSingle]">
         <div class="header">
-            <img class="icon" :src="icon" alt="" />
+            <img class="icon" src="" alt="" />
             <span class="name">{{ name }}</span>
         </div>
         <div class="more">
-            <capsule />
+            <capsule @turn-left="turnLeft" @turn-right="turnRight"/>
         </div>
         
         <div class="content">
@@ -26,7 +26,7 @@
 </template>
 
 <style lang="less">
-@import "./GrowthCard.less";
+@import "./index.less";
 </style>
 
 <script setup lang="ts">
@@ -39,15 +39,17 @@ console.log(111)
 //     need: number,
 //     have?: number
 // }
-
-const props = defineProps({
-    icon: String,
-    name: String,
-    metarials: Array
-})
-const emit = defineEmits(['change', 'delete'])
+const name = '珊瑚宫心海'
 const isMultiple = false
 const shadowSingle = 'card-single'
 const shadowMultiple = 'card-multiple'
+
+const turnLeft = () => {
+    console.log(`parent turnLeft`)
+}
+
+const turnRight = () => {
+    console.log(`parent turnRight`)
+}
 
 </script>

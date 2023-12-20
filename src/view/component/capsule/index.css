@@ -15,12 +15,12 @@
 .box .icon-left {
   width: 24px;
   height: 24px;
-  padding: 2px 2px 2px 8px;
+  padding: 2px 2px 2px 4px;
 }
 .box .icon-right {
   width: 24px;
   height: 24px;
-  padding: 2px 8px 2px 2px;
+  padding: 2px 4px 2px 2px;
 }
 .box .icon-left:active {
   background-color: rgba(0, 0, 0, 0.38);
@@ -33,6 +33,6 @@
   border-bottom-right-radius: 99px;
 }
 .box .split {
-  height: 20px;
+  height: 16px;
   border: 1px solid rgba(0, 0, 0, 0.38);
 }

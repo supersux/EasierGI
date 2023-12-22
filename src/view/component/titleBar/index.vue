@@ -16,7 +16,7 @@
 @import "./index.less";
 </style>
 
-<script setup>
+<script setup lang="ts">
 import { appWindow } from '@tauri-apps/api/window'
 import { onMounted, onUnmounted } from 'vue'
 

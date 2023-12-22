@@ -1,18 +1,20 @@
 <template>
     <div data-tauri-drag-region class="root-component">
         <div class="header">
-            <img :src="icon" alt="icon" />
+            <img :src="icon || userIcon" alt="icon" />
         </div>
         <div class="content">
-            <div class="item-top" v-for="item in navTop" @click="navToPage(item.path)">
-            <img src="" alt="icon" />
-            <!-- <a>{{item}}</a> -->
+            <div class="item-box" v-for="item in navTop" @click="navToPage(item.path, item['icon'])">
+                <div class="img-press"> 
+                    <svg-icon :name="item['icon']" />
+                </div>
+            </div>
         </div>
-        </div>
-        <div class="footer">
-            <div class="item-bottom" v-for="item in navBottom" @click="navToPage(item.path)">
-                <img src="" alt="icon" />
-                <!-- <a>{{item}}</a> -->
+        <div class="content">
+            <div class="item-box" v-for="item in navBottom" @click="navToPage(item.path, item['icon'])">
+                <div class="img-press"> 
+                    <svg-icon :name="item['icon']" />
+                </div>
             </div>
         </div>
     </div>
@@ -23,16 +25,37 @@
 </style>
 
 <script lang="ts" setup>
-import router from '/src/router';
 
-defineProps({
-    icon: String,
-    navTop: Array<any>,
-    navBottom: Array<any>
-})
+import router from '../../../router';
+import {ref} from 'vue'
 
-function navToPage(path: String) {
-    console.log(`nav to ${path}`)
+interface NavItem {
+    icon: string | URL,
+    path: string
+}
+
+
+interface Props {
+    icon: {
+        type: string | URL,
+        default: '../../../assets/svg/user.svg'
+    },
+    navTop: {
+        type: NavItem[],
+        default: []
+    },
+    navBottom: {
+        type: NavItem[],
+        default: []
+    }
+}
+
+defineProps<Props>()
+// const userIcon = 
+const userIcon = '/user.svg'
+
+function navToPage(path: String, test: String) {
+    console.log(`nav to ${path}, icon:${test}`)
     router.push(path)
 }
 </script>

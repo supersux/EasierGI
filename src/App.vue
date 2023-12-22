@@ -19,26 +19,30 @@ import router from "./router";
 //   console.log(`监听右键菜单`)
 // }
 
-const navTopList = [
-  { path: '/', icon: '' },
-  { path: '/chat', icon: '' },
-  { path: '/contact', icon: '' },
-  { path: '/ablum', icon: '' }
+const navTop = [
+  { path: '/', icon: 'home' },
+  { path: '/chat', icon: 'chat' },
+  { path: '/contact', icon: 'contact' },
+  { path: '/ablum', icon: 'ablum' }
 ]
 
 const navBottom = [
-  { path: '/setting', icon: '' }
+  { path: '/setting', icon: 'setting' }
 ]
 
-const src = '/src/assets/vue.svg'
+// 派蒙头像定义
+const paimon_src = 'https://gd-hbimg.huaban.com/0c68d3ec11529096a9910e86d9e76651d5585c3067a78-h7cuzu_fw658webp'
 </script>
 <script>
 
 </script>
 <template>
   <div class="container">
-    <SiderBar :icon="src" :nav-top="navTopList" :nav-bottom="navBottom"/>
-    <router-view></router-view>
+    <SiderBar :nav-top="navTop" :nav-bottom="navBottom"/>
+    <Transition name="fade">
+      <router-view></router-view>
+    </Transition>
+    
     <!-- <div style="width: 100%;">
       <TitleBar/>
     </div> -->

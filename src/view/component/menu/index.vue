@@ -1,5 +1,5 @@
 <template>
-    <div class="root">
+    <div class="root-menu">
         <label class="item" v-bind:class="[idx + 1 < list.length ? itemLine : '']" v-for="(item, idx) in list"
             @click="buttonClick(item, idx)">{{ item }} </label>
     </div>

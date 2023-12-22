@@ -1,0 +1,64 @@
+.root-component {
+  width: 64px;
+  height: 100%;
+  display: grid;
+  max-width: 96px;
+  grid-template-rows: auto 1fr auto;
+  background-color: red;
+}
+.root-component .header {
+  width: 100%;
+  aspect-ratio: 0.75;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.root-component .header img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: blue;
+}
+.root-component .item-img {
+  width: 50%;
+  aspect-ratio: 1;
+  background-color: blue;
+  border-radius: 8px;
+}
+.root-component .content .item-top {
+  width: 100%;
+  aspect-ratio: 1.25;
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.root-component .content .item-top img {
+  width: 50%;
+  aspect-ratio: 1;
+  background-color: blue;
+  border-radius: 8px;
+}
+.root-component .content .item-top:active {
+  background-color: green;
+}
+.root-component .footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.root-component .footer .item-bottom {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.root-component .footer .item-bottom img {
+  width: 50%;
+  aspect-ratio: 1;
+  background-color: blue;
+  border-radius: 8px;
+}

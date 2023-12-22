@@ -3,7 +3,8 @@
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build",
     "devPath": "http://localhost:1420",
-    "distDir": "../dist"
+    "distDir": "../dist",
+    "withGlobalTauri":true
   },
   "package": {
     "productName": "EasierGI",
@@ -15,6 +16,17 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true
       }
     },
     "bundle": {
@@ -37,8 +49,8 @@
         "fullscreen": false,
         "resizable": true,
         "title": "EasierGI ∙ 一站式养成角色 ∙ 0.0.1",
-        "width": 1600,
-        "height": 900
+        "minWidth": 800,
+        "minHeight": 600
       }
     ]
   }

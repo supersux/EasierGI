@@ -7,8 +7,13 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DButton: typeof import('vue-devui/button/index.es.js')['Button']
-    DSelect: typeof import('vue-devui/select/index.es.js')['Select']
+    AAvatar: typeof import('ant-design-vue/es')['Avatar']
+    ACard: typeof import('ant-design-vue/es')['Card']
+    ACardMeta: typeof import('ant-design-vue/es')['CardMeta']
+    ACol: typeof import('ant-design-vue/es')['Col']
+    ARow: typeof import('ant-design-vue/es')['Row']
     Greet: typeof import('./src/components/Greet.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }

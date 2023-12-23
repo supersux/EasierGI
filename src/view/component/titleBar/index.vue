@@ -1,5 +1,5 @@
 <template>
-    <div class="root-component" data-tauri-drag-region>
+    <div class="root-title-bar" data-tauri-drag-region>
         <div class="titlebar-button" id="titlebar-minimize">
             <img src="https://api.iconify.design/mdi:window-minimize.svg" alt="minimize" />
         </div>

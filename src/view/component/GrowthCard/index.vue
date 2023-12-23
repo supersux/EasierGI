@@ -1,5 +1,5 @@
 <template>
-    <div class="card" v-bind:class="[isMultiple ? shadowMultiple : shadowSingle]">
+    <div class="root-growth" v-bind:class="[isMultiple ? shadowMultiple : shadowSingle]">
         <div class="header">
             <img class="icon" src="" alt="" />
             <span class="name">{{ name }}</span>

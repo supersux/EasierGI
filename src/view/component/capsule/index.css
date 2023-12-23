@@ -1,38 +1,38 @@
-.box {
+.root-capsule {
   display: flex;
   height: 28px;
   align-items: center;
   border-radius: 99px;
   border: thin solid rgba(0, 0, 0, 0.38);
 }
-.box .icon {
+.root-capsule .icon {
   width: 20px;
   height: 20px;
 }
-.box .checked {
+.root-capsule .checked {
   background-color: rgba(0, 0, 0, 0.38);
 }
-.box .icon-left {
+.root-capsule .icon-left {
   width: 20px;
   height: 20px;
   padding: 2px 2px 2px 4px;
 }
-.box .icon-right {
+.root-capsule .icon-right {
   width: 20px;
   height: 20px;
   padding: 2px 4px 2px 2px;
 }
-.box .icon-left:active {
+.root-capsule .icon-left:active {
   background-color: rgba(0, 0, 0, 0.38);
   border-top-left-radius: 99px;
   border-bottom-left-radius: 99px;
 }
-.box .icon-right:active {
+.root-capsule .icon-right:active {
   background-color: rgba(0, 0, 0, 0.38);
   border-top-right-radius: 99px;
   border-bottom-right-radius: 99px;
 }
-.box .split {
+.root-capsule .split {
   height: 12px;
   border: 1px solid rgba(0, 0, 0, 0.38);
 }

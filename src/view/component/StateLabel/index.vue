@@ -1,5 +1,5 @@
 <template>
-    <div class="memo">
+    <div class="root-state-label">
         <div class="dot" v-bind:style="{ '--dotColor': stateColor }"></div>
         <span class="state">{{ memo }}</span>
     </div>

@@ -1,15 +1,15 @@
-.root {
+.root-state-label {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.root .dot {
+.root-state-label .dot {
   display: inline-block;
   width: 20px;
   height: 20px;
   align-self: center;
 }
-.root .dot::after {
+.root-state-label .dot::after {
   content: '';
   margin: 5px;
   margin-left: 0px;
@@ -19,7 +19,7 @@
   background: var(--dotColor);
   border-radius: 50%;
 }
-.root .state {
+.root-state-label .state {
   display: inline-block;
   line-height: 20px;
   text-align: center;

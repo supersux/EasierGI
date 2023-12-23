@@ -1,5 +1,5 @@
 <template>
-    <div data-tauri-drag-region class="root-component">
+    <div data-tauri-drag-region class="root-sider-bar">
         <div class="header">
             <img :src="icon || userIcon" alt="icon" />
         </div>

@@ -1,6 +1,6 @@
 <!-- 胶囊菜单模板 -->
 <template>
-    <div class="box">
+    <div class="root-capsule">
         <img class="icon-left" src="/arrow-left-filling.svg" alt="" @click="turnLeft"/>
         <div class="split"></div>
         <img class="icon-right" src="/arrow-right-filling.svg" alt="" @click="turnRight" />

@@ -1,5 +1,6 @@
 <template>
-    <svg :class="svgClass" aria-hidden="true" v-on="$attrs" :style="{ color: props.color }">
+    <svg :class="svgClass" aria-hidden="true" v-on="$attrs"
+        :style="{ color: props.color, width: props.size, height: props.size }">
         <use :xlink:href="iconName" />
     </svg>
 </template>
@@ -19,6 +20,10 @@ interface Props {
     color: {
         type: string,
         default: ''
+    },
+    size: {
+        type: string,
+        default: '32px'
     }
 }
 

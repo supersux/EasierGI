@@ -6,6 +6,7 @@
 // import Test from "./view/component/test/index.vue"
 import TitleBar from "./view/component/titleBar/index.vue"
 import SiderBar from "./view/component/siderbar/index.vue"
+import UserInfo from "./view/component/UserInfo/index.vue"
 import router from "./router";
 // 导入插件需要的参数类型
 
@@ -39,9 +40,8 @@ const paimon_src = 'https://gd-hbimg.huaban.com/0c68d3ec11529096a9910e86d9e76651
 <template>
   <div class="container">
     <SiderBar :nav-top="navTop" :nav-bottom="navBottom"/>
-    <Transition name="fade">
-      <router-view></router-view>
-    </Transition>
+    <UserInfo style="position: absolute; left: 80px; top: 40px;"></UserInfo>
+    <router-view></router-view>
     
     <!-- <div style="width: 100%;">
       <TitleBar/>

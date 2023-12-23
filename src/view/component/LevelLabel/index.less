@@ -1,0 +1,39 @@
+@import "../../../common.less";
+
+.root-level-lable {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+
+    .show-img {
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
+
+    .show-text {
+        color: @text-color-light-normal;
+        align-self: center;
+        font-size: @text-size-description;
+        font-weight: 500;
+        flex: 1;
+    }
+
+    .toggle {
+        width: 16px;
+        height: 16px;
+        margin-left: @atom-space-trible;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        align-items: center;
+        border-radius: @atom-space;
+
+
+        &:active {
+            background-color: @press-color-light;
+            transition: transform 1s liner;
+            transform: rotate(90deg);
+        }
+    }
+}

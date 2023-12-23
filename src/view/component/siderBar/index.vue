@@ -5,14 +5,14 @@
         </div>
         <div class="content">
             <div class="item-box" v-for="item in navTop" @click="navToPage(item.path, item['icon'])">
-                <div class="img-press"> 
+                <div class="img-press">
                     <svg-icon :name="item['icon']" />
                 </div>
             </div>
         </div>
         <div class="content">
             <div class="item-box" v-for="item in navBottom" @click="navToPage(item.path, item['icon'])">
-                <div class="img-press"> 
+                <div class="img-press">
                     <svg-icon :name="item['icon']" />
                 </div>
             </div>
@@ -27,7 +27,7 @@
 <script lang="ts" setup>
 
 import router from '../../../router';
-import {ref} from 'vue'
+import { ref } from 'vue'
 
 interface NavItem {
     icon: string | URL,
@@ -54,8 +54,8 @@ defineProps<Props>()
 // const userIcon = 
 const userIcon = '/user.svg'
 
-function navToPage(path: String, test: String) {
+function navToPage(path: string, test: string) {
     console.log(`nav to ${path}, icon:${test}`)
-    router.push(path)
+    router.push({ path: path })
 }
 </script>

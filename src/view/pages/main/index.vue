@@ -1,7 +1,7 @@
 <template>
-    <a-layout style="min-height: 100vh">
+    <a-layout style="min-height: 100vh" hasSide>
         <SiderBar></SiderBar>
-        <a-layout>
+        <a-layout style="margin:8px;">
             <RouterView></RouterView>
         </a-layout>
     </a-layout>

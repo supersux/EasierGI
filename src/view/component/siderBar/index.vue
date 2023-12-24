@@ -1,37 +1,13 @@
 <template>
     <a-layout-sider class="root-sider-bar" v-model:theme="theme" collapsedWidth="64" collapsed>
         <a-flex style="width: 100%; height: 64px; margin-top: 8px;" align="center" justify="center">
-            <UserInfo></UserInfo>
+            <UserInfo v-model:user-infos="userInfo"></UserInfo>
         </a-flex>
-        <a-menu :selectedKeys="current" v-model:theme="theme" v-model:items="items" v-on:click="navToPage">
+        <a-menu v-model:selectedKeys="selectedKeys" v-model:theme="theme" :items="items" v-on:click="navToPage">
         </a-menu>
-        <!-- <a-menu v-model:theme="theme" selectedKeys="home">
-            <a-menu-item key="home" v-on:click="navToPage('/')">
-                <home-outlined />
-                <span>home</span>
-            </a-menu-item>
-            <a-menu-item key="chat" v-on:click="navToPage('/chat')">
-                <message-outlined />
-                <span>chat</span>
-            </a-menu-item>
-            <a-menu-item key="contact" v-on:click="navToPage('/contact')">
-                <team-outlined />
-                <span>contact</span>
-            </a-menu-item>
-            <a-menu-item key="ablum" v-on:click="navToPage('/ablum')">
-                <picture-outlined />
-                <span>ablum</span>
-            </a-menu-item>
-            <a-menu-item key="setting" v-on:click="navToPage('/setting')">
-                <setting-outlined />
-                <span>setting</span>
-            </a-menu-item>
-        </a-menu> -->
-
         <a-flex style="position: absolute; bottom: 0px; width:100%; marginBottom: 16px;" align="center" justify="center">
             <a-avatar style="background-color: transparent;" size="36">
                 <template #icon>
-                    <!-- <BulbOutlined /> -->
                     <BulbTwoTone :two-tone-color="theme == 'light' ? 'rgb(0,0,0)' : 'rgb(255, 255, 255)'"
                         v-on:click="changeTheme" />
                 </template>
@@ -43,8 +19,9 @@
 <style scoped></style>
 
 <script lang="ts" setup>
+import { h, ref, onBeforeMount, reactive } from 'vue'
+import { MenuProps } from 'ant-design-vue'
 import {
-    UserOutlined,
     HomeOutlined,
     MessageOutlined,
     TeamOutlined,
@@ -52,66 +29,66 @@ import {
     SettingOutlined,
     BulbTwoTone
 } from '@ant-design/icons-vue'
-import { h, ref, watch, onMounted } from 'vue'
-import { MenuProps } from 'ant-design-vue'
 import UserInfo from '../UserInfo/index.vue'
+import { UserInfoProps } from '../UserInfo/index.vue'
 import router from '../../../router'
 
-const theme = ref<string>('light')
-const current = ['home']
+const emit = defineEmits(['themeChanged'])
 
-const items = [
+const theme = ref<string>('light')
+const selectedKeys = ref<String[]>(['home']);
+// should remove label, the label caused memory leak
+const items = ref<MenuProps['items']>([
     {
         key: 'home',
-        icon: () => h(HomeOutlined),
-        label: 'home',
-        path: '/home'
+        icon: () => h(HomeOutlined)
     },
     {
         key: 'chat',
-        icon: () => h(MessageOutlined),
-        label: 'chat',
-        path: '/chat'
+        icon: () => h(MessageOutlined)
     },
     {
         key: 'contact',
-        icon: () => h(TeamOutlined),
-        label: 'contact',
-        path: '/contact'
+        icon: () => h(TeamOutlined)
     },
     {
         key: 'ablum',
-        icon: () => h(PictureOutlined),
-        label: 'ablum',
-        path: '/ablum'
+        icon: () => h(PictureOutlined)
     },
     {
         key: 'setting',
-        icon: () => h(SettingOutlined),
-        label: 'setting',
-        path: '/setting'
+        icon: () => h(SettingOutlined)
     }
-]
+])
 
 const changeTheme = () => {
-    if (theme.value == 'light') {
-        theme.value = 'dark'
-    } else {
-        theme.value = 'light'
-    }
+    // to root view and then distributed by root view
+    // emit('themeChanged', toThemeEnum(theme.value))
+    userInfo.level = 60
+    userInfo.name = '周周'
 }
 
-onMounted(() => {
-    router.push({ path: '/home' })
+onBeforeMount(() => {
+    router.push({ path: '/home', replace: true })
+    selectedKeys.value = ['home']
 })
 
 const navToPage: MenuProps['onClick'] = (e) => {
     console.debug(`navToPage::${e['key']}`)
-    router.push({ path: e['key'] })
+    router.push({ path: e['key'], replace: true })
 };
+
+// mock data
+const userInfo = reactive<UserInfoProps>({
+    icon: 'https://gd-hbimg.huaban.com/0c68d3ec11529096a9910e86d9e76651d5585c3067a78-h7cuzu_fw658webp',
+    name: '苏苏',
+    id: 4564564564,
+    level: 58,
+    active: 520
+})
+
 
 </script>
 
 <script lang="ts">
-// should define items type
 </script>

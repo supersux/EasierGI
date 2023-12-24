@@ -5,13 +5,13 @@
 }
 .root-state-label .dot {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   align-self: center;
 }
 .root-state-label .dot::after {
   content: '';
-  margin: 5px;
+  margin: 3px;
   margin-left: 0px;
   display: table;
   width: 10px;
@@ -20,8 +20,6 @@
   border-radius: 50%;
 }
 .root-state-label .state {
-  display: inline-block;
-  line-height: 20px;
   text-align: center;
   color: rgba(0, 0, 0, 0.68);
   font-size: 12px;

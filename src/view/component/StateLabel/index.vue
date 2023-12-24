@@ -20,16 +20,8 @@ export enum State {
 import { watch, ref } from "vue";
 
 const props = defineProps<{
-    state: {
-        type: State,
-        default: State.OFFLINE,
-        required: false
-    }
-    memo: {
-        type: String,
-        default: '',
-        required: false
-    }
+    state: State
+    memo: String
 }>();
 
 const stateColor = ref(getColor(State.OFFLINE))

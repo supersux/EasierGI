@@ -15,18 +15,14 @@
 </style>
 
 <script setup lang="ts">
-import { ref, reactive, watch } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 const enum LabelState {
     TEXT,
     ICON
 }
 
 const props = defineProps<{
-    level: {
-        type: number,
-        default: 60,
-        required: false
-    }
+    level: number
 }>();
 const state = ref(LabelState.ICON)
 const icons = ref(getIcons(Number(0)))
@@ -40,6 +36,10 @@ watch(
         icons.value = getIcons(Number(newProps))
     }
 )
+
+onMounted(() => {
+    icons.value = getIcons(props.level)
+})
 
 // base as binary base or decimal base
 function getIcons(level: number) {

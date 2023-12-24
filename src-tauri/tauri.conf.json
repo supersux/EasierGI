@@ -4,7 +4,7 @@
     "beforeBuildCommand": "npm run build",
     "devPath": "http://localhost:1420",
     "distDir": "../dist",
-    "withGlobalTauri":true
+    "withGlobalTauri": true
   },
   "package": {
     "productName": "EasierGI",
@@ -27,6 +27,19 @@
         "unmaximize": true,
         "unminimize": true,
         "startDragging": true
+      },
+      "app": {
+        "all": true,
+        "hide": true,
+        "show": true
+      },
+      "clipboard": {
+        "all": true,
+        "readText": true,
+        "writeText": true
+      },
+      "dialog": {
+        "message": true
       }
     },
     "bundle": {

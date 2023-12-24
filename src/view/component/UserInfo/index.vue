@@ -1,7 +1,8 @@
 <template>
     <a-popover placement="rightTop" trigger="click">
+        <context-holder />
         <template #title>
-            <a-flex style="line-height: 1; font-weight: 400;" gap="middle">
+            <a-flex style="line-height: 1; font-weight: 400; user-select: none;" gap="middle">
                 <a-avatar v-model:src="userInfos.icon" :size="64">
                     <template #icon>
                         <UserOutlined />
@@ -15,14 +16,14 @@
                      color: rgba(0, 0, 0, 0.88);">{{ userInfos.name }}</span>
                     <span style="font-size: 16px; color: rgba(0, 0, 0, 0.68);">uid</span>
                     <span style="font-size: 16px; color: rgba(0, 0, 0, 0.68);">{{ userInfos.id }}</span>
-                    <CopyOutlined />
+                    <CopyOutlined v-on:click="copyId(userInfos.id)" />
                     <a-tag style="border-radius: 50%;" color="green"></a-tag>
                     <span style="font-size: 16px; color: rgba(0, 0, 0, 0.68);">在线</span>
                 </div>
             </a-flex>
         </template>
         <template #content>
-            <a-flex gap="middle" vertical>
+            <a-flex style="user-select: none;" gap="middle" vertical>
                 <div style="display: inline-grid; grid-gap: 8px; grid-template-columns: auto 1fr;">
                     <span style="font-size: 16px; color: rgba(0, 0, 0, 0.88); font-weight: 500;">等级</span>
                     <LevelLabel v-model:level="userInfos.level" />
@@ -45,13 +46,24 @@
     </a-popover>
 </template>
 
+<style scoped>
+#user-info-header
+#user-info-content {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+</style>
+
 <script lang="ts" setup>
 import {
     UserOutlined,
     CopyOutlined
 } from '@ant-design/icons-vue'
+import { message } from 'ant-design-vue';
 import LevelLabel from "../LevelLabel/index.vue"
-import { ref } from "vue";
+import { writeText } from '@tauri-apps/api/clipboard';
 
 // const userInfo = ref<UserInfoProps>({
 //     icon: '',
@@ -64,11 +76,23 @@ import { ref } from "vue";
 defineProps<{
     userInfos: UserInfoProps
 }>()
+
+const [messageApi, contextHolder] = message.useMessage();
+
+const copyId = (e: string | number) => {
+    let txt: string = e.toString()
+    console.log(`start copy ${txt}`)
+    let copyResult = writeText(txt)
+    copyResult.then(() => {
+        messageApi.success(`复制成功`);
+    })
+}
+
 </script>
 
 <script lang="ts">
 export interface UserInfoProps {
-    icon?: string,
+    icon: string,
     name: string,
     id: number | string,
     level: number,

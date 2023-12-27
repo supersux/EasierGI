@@ -1,29 +1,39 @@
 <template>
-    <a-layout style="max-height: 100vh; min-height: 100vh;" hasSide>
-        <SiderBar></SiderBar>
-        <a-layout style="margin:8px;" class="display-content">
+    <a-layout :style="rootCss" hasSide>
+        <SiderBar @themeChanged="notifiyChangeTheme"></SiderBar>
+        <a-layout style="margin:8px;">
             <RouterView></RouterView>
         </a-layout>
     </a-layout>
 </template>
 
-<style scoped>
-.display-content::-webkit-scrollbar {
-    display: none;
-    /* Chrome Safari */
-    scrollbar-width: none;
-}
-
-.display-content {
-    scrollbar-width: none;
-    max-height: 100%;
-    overflow-y: scroll;
-}
-</style>
-
 <script lang="ts" setup>
-import SiderBar from '../../component/siderBar/index.vue'
-import UserInfo from '../../component/userInfo/index.vue'
-import { RouterView } from 'vue-router'
-import { h, ref } from 'vue'
+import { inject, ref, isRef, watch } from 'vue';
+import { RouterView } from 'vue-router';
+import SiderBar from '../../component/siderbar/index.vue'
+import { ColorTheme, isDarkTheme, G_COLOR_THEME } from '../../../config';
+import {   } from 'vue';
+import {  } from 'vue';
+
+// 通知主题变更
+const EVENT_THEME_CHANGED = 'themeChanged'
+const emit = defineEmits([EVENT_THEME_CHANGED])
+const notifiyChangeTheme = (color: ColorTheme) => {
+    emit(EVENT_THEME_CHANGED, color)
+}
+
+const rootCss = ref({
+    minHeight: '100vh',
+    maxHeight: '100vh',
+    backgroundColor: '#F7F7F7'
+})
+
+// 响应式修改主题
+const colorTheme = inject(G_COLOR_THEME)
+if (isRef(colorTheme)) {
+    watch(colorTheme, (value) => {
+        rootCss.value.backgroundColor = isDarkTheme(value) ? '#282A3A' : '#F7F7F7'
+    })
+}
+
 </script>

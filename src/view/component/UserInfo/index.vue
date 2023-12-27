@@ -47,8 +47,7 @@
 </template>
 
 <style scoped>
-#user-info-header
-#user-info-content {
+#user-info-header #user-info-content {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -62,8 +61,9 @@ import {
     CopyOutlined
 } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue';
-import LevelLabel from "../LevelLabel/index.vue"
+import LevelLabel from "../levellabel/index.vue"
 import { writeText } from '@tauri-apps/api/clipboard';
+import { ref } from 'vue';
 
 // const userInfo = ref<UserInfoProps>({
 //     icon: '',
@@ -72,6 +72,11 @@ import { writeText } from '@tauri-apps/api/clipboard';
 //     level: 1,
 //     active: 0
 // })
+
+import { theme } from 'ant-design-vue';
+const { useToken } = theme;
+const { token } = useToken();
+console.log(token.value)
 
 defineProps<{
     userInfos: UserInfoProps
@@ -83,8 +88,12 @@ const copyId = (e: string | number) => {
     let txt: string = e.toString()
     console.log(`start copy ${txt}`)
     let copyResult = writeText(txt)
+    
     copyResult.then(() => {
-        messageApi.success(`复制成功`);
+        messageApi.success({
+            content: `复制成功`,
+            duration: 1
+        });
     })
 }
 

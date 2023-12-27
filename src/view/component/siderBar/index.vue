@@ -1,15 +1,15 @@
 <template>
     <a-layout-sider class="root-sider-bar" v-model:theme="theme" collapsedWidth="64" collapsed>
-        <a-flex style="width: 100%; height: 64px; margin-top: 8px;" align="center" justify="center">
+        <a-flex style="width: 100%; height: 64px; margin-top: 8px; " align="center" justify="center">
             <UserInfo v-model:user-infos="userInfo"></UserInfo>
         </a-flex>
-        <a-menu v-model:selectedKeys="selectedKeys" v-model:theme="theme" :items="items" v-on:click="navToPage">
+        <a-menu style="border-inline-end: 0;" v-model:selectedKeys="selectedKeys" v-model:theme="theme" :items="items"
+            v-on:click="navToPage">
         </a-menu>
         <a-flex style="position: absolute; bottom: 0px; width:100%; marginBottom: 16px;" align="center" justify="center">
             <a-avatar style="background-color: transparent;" size="36">
                 <template #icon>
-                    <BulbTwoTone :two-tone-color="theme == 'light' ? 'rgb(0,0,0)' : 'rgb(255, 255, 255)'"
-                        v-on:click="changeTheme" />
+                    <BulbTwoTone :two-tone-color="themeBarColor" v-on:click="changeTheme" />
                 </template>
             </a-avatar>
         </a-flex>
@@ -19,7 +19,7 @@
 <style scoped></style>
 
 <script lang="ts" setup>
-import { h, ref, onBeforeMount, reactive } from 'vue'
+import { h, ref, onBeforeMount, reactive, inject, watch, isRef } from 'vue'
 import { MenuProps } from 'ant-design-vue'
 import {
     HomeOutlined,
@@ -29,13 +29,14 @@ import {
     SettingOutlined,
     BulbTwoTone
 } from '@ant-design/icons-vue'
-import UserInfo from '../UserInfo/index.vue'
-import { UserInfoProps } from '../UserInfo/index.vue'
+import UserInfo from '../userinfo/index.vue'
+import { UserInfoProps } from '../userinfo/index.vue'
 import router from '../../../router'
-
+import { ColorTheme, G_COLOR_THEME, isDarkTheme } from '../../../config'
 const emit = defineEmits(['themeChanged'])
 
 const theme = ref<string>('light')
+const themeBarColor = ref(ColorTheme.BLUE)
 const selectedKeys = ref<String[]>(['home']);
 // should remove label, the label caused memory leak
 const items = ref<MenuProps['items']>([
@@ -60,12 +61,26 @@ const items = ref<MenuProps['items']>([
         icon: () => h(SettingOutlined)
     }
 ])
-
+// @test
+const themeList = [ColorTheme.DARK, ColorTheme.GREEN, ColorTheme.PINK, ColorTheme.PURPLE, ColorTheme.RED, ColorTheme.YELLOW, ColorTheme.BLUE]
+let index = 0
 const changeTheme = () => {
     // to root view and then distributed by root view
     // emit('themeChanged', toThemeEnum(theme.value))
-    userInfo.level = 60
-    userInfo.name = '周周'
+    // userInfo.level = 60
+    // userInfo.name = '周周'
+    console.log(`changeTheme`)
+    emit('themeChanged', themeList[index])
+    index = (index + 1) % themeList.length
+}
+
+// 响应式修改主题
+const colorTheme = inject(G_COLOR_THEME)
+if (isRef(colorTheme)) {
+    watch(colorTheme, (value) => {
+        theme.value = isDarkTheme(value) ? 'dark' : 'light'
+        themeBarColor.value = value
+    })
 }
 
 onBeforeMount(() => {

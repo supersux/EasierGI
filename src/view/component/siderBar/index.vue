@@ -62,7 +62,7 @@ const items = ref<MenuProps['items']>([
     }
 ])
 // @test
-const themeList = [ColorTheme.DARK, ColorTheme.GREEN, ColorTheme.PINK, ColorTheme.PURPLE, ColorTheme.RED, ColorTheme.YELLOW, ColorTheme.BLUE]
+const themeList = [ ColorTheme.GREEN, ColorTheme.PINK, ColorTheme.PURPLE, ColorTheme.RED, ColorTheme.YELLOW, ColorTheme.BLUE]
 let index = 0
 const changeTheme = () => {
     // to root view and then distributed by root view

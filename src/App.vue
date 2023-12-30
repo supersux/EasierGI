@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import { provide , ref } from 'vue';
+import { provide, ref } from 'vue';
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import enGB from 'ant-design-vue/es/locale/en_GB'
 import dayjs from 'dayjs';
@@ -14,7 +14,9 @@ import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/en';
 import Main from './view/pages/main/index.vue'
 import Test from './view/pages/test/parent.vue'
-import {ColorTheme, G_COLOR_THEME } from './config';
+import { ColorTheme, G_COLOR_THEME } from './config';
+import { onMounted } from 'vue';
+import { test, requestUigf, requestMys } from '../src/api/api'
 
 // 主题变更
 const globalTheme = ref({

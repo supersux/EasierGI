@@ -1,5 +1,5 @@
 <template>
-    <div :style="rootCss">
+    <CardBox :style="rootCss">
         <a-timeline mode="left">
             <a-timeline-item>
                 <TimeTitle :style="titleCss"></TimeTitle>
@@ -12,25 +12,20 @@
                 <span :style="titleCss">{{ taskMemo }}</span>
             </FlowUnit>
         </a-timeline>
-    </div>
+    </CardBox>
 </template>
 
 <script lang="ts" setup>
-import { inject, ref, onMounted, onUnmounted,getCurrentInstance } from 'vue'
-import { theme } from 'ant-design-vue';
-import { ClockCircleOutlined, MinusCircleOutlined } from '@ant-design/icons-vue';
-import StateBar from './state.vue'
+import { inject, ref, onMounted, onUnmounted } from 'vue'
 import { State } from './state.vue'
+import CardBox from '../cardbox/index.vue'
 import TimeTitle from './timetext.vue'
 import FlowUnit from './flowunit.vue'
 import TagCard from './tagcard.vue'
-import { ColorTheme, isDarkTheme, G_COLOR_THEME } from '../../../config.ts';
+import { G_COLOR_THEME } from '../../../config.ts';
 // 样式定义
 const rootCss = ref({
-    backgroundColor: '#fff',
-    padding: '32px 16px 0px 16px',
-    borderRadius: '8px'
-
+    padding: '32px 16px 0px 16px'
 })
 // 响应式修改主题
 const colorTheme = inject(G_COLOR_THEME)

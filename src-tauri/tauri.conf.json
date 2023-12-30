@@ -7,7 +7,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "EasierGI",
+    "productName": "easiergi",
     "version": "0.0.1"
   },
   "tauri": {
@@ -63,7 +63,8 @@
         "resizable": true,
         "title": "EasierGI ∙ 0.0.1",
         "minWidth": 800,
-        "minHeight": 600
+        "minHeight": 600,
+        "fileDropEnabled": false
       }
     ]
   }

@@ -1,6 +1,7 @@
 <template>
     <div class="display-content">
         <DailyLine />
+        <!-- <Schedual/> -->
     </div>
 </template>
 
@@ -20,6 +21,14 @@
 
 <script lang="ts" setup>
 import DailyLine from '../../component/dailyline/index.vue';
+import Schedual from '../../component/schedual/index.vue';
 import { ref, onMounted, onBeforeMount } from 'vue';
+
+import { theme } from 'ant-design-vue';
+const { useToken } = theme;
+const { token } = useToken();
+onMounted(() => {
+    console.log(token)
+})
 
 </script>

@@ -12,7 +12,7 @@ const rootCss = {
     fontWeight: 500
 }
 
-const title = ref('--')
+const title = ref('时间读取中...')
 
 let timer: NodeJS.Timeout | string | number | undefined = undefined
 

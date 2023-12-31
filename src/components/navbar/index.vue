@@ -36,7 +36,7 @@
     </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .parent {
     width: 100%;
     height: 64px;
@@ -61,11 +61,11 @@
 }
 
 .child:hover {
-    background-color: white;
+    background-color: #fff;
     background-position: -100px 100px, -100px 100px;
     transform: rotate3d(0.5, 1, 0, 30deg);
     transform: perspective(180px) rotateX(60deg) translateY(2px);
-    box-shadow: 0px 10px 10px rgb(1, 49, 182);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
 }
 
 button {

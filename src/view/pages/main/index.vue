@@ -1,7 +1,12 @@
 <template>
-    <div class="main" draggable="true">
-        <Draggable></Draggable>
-        <NavBar class="nav-bar"/>
+    <div class="main">
+        <Draggable>
+            <div style="width: 300px; height: 300px; "> </div>
+        </Draggable>
+        <Draggable>
+            <div style="width: 300px; height: 300px; background-color: yellow;"> </div>
+        </Draggable>
+        <NavBar class="nav-bar" />
         <!-- <UserIcon class="user-icon" draggable="true"/> -->
     </div>
 </template>

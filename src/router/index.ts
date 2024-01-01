@@ -14,7 +14,7 @@ import Setting from "../view/pages/setting/index.vue";
 import About from "../view/pages/about/index.vue";
 
 const routes: RouteRecordRaw[] = [
-  { path: "/home", name: "Home", component: Home },
+  { path: "/home", name: "Home", component: Home, meta: { transition: 'slide-fade' } },
   { path: "/chat", name: "Chat", component: Chat },
   { path: "/contact", name: "Contact", component: Contact },
   { path: "/ablum", name: "Ablum", component: Ablum },

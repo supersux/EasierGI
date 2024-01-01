@@ -4,7 +4,8 @@
     </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
+@import '../../../common.less';
 .display-content::-webkit-scrollbar {
     display: none;
     scrollbar-width: none;
@@ -12,11 +13,12 @@
 
 .display-content {
     scrollbar-width: none;
-    max-height: 100%;
-    /* Firefox */
     overflow-y: scroll;
-    /* IE 10+ */
-    -ms-overflow-style: none;
+    position: relative;
+    display: flex;
+    background-color: green;
+    flex: 1;
+    overflow: hidden;
 }
 </style>
 

@@ -1,86 +1,144 @@
 <template>
-    <div class="parent">
-        <div class="child child-1">
-            <button class="button btn-1">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#1e90ff">
-                    <path
-                        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
-                    </path>
-                </svg>
-            </button>
-        </div>
-        <div class="child child-2">
-            <button class="button btn-2">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" fill="#ff00ff">
-                    <path
-                        d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                    </path>
-                </svg></button>
-        </div>
-        <div class="child child-3">
-            <button class="button btn-3">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 496 512">
-                    <path
-                        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
-                    </path>
-                </svg></button>
-        </div>
-        <div class="child child-4">
-            <button class="button btn-4">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512" fill="#4267B2">
-                    <path
-                        d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
-                    </path>
-                </svg></button>
-        </div>
+    <div :class="['bar-root', vertical ? 'bar-root-vertical' : 'bar-root-horizontal']">
+        <Tray id="home" checked @checked="onHomeChecked">
+            <svg t="1704036689024" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="16381" width="1em" height="1em">
+                <path
+                    d="M281.92 398.507l197.333-197.334c9.6-9.6 22.294-14.4 34.88-14.4 12.694 0 25.28 4.8 34.88 14.4l198.08 198.08 207.04 207.04c2.027 2.027 5.44 1.387 6.614-1.173 8.426-19.093 12.906-39.893 12.906-61.333 0-40.64-15.786-78.72-44.48-107.414L621.547 128.64c-59.307-59.2-155.627-59.2-214.934 0L99.093 436.267C70.4 464.96 54.613 503.04 54.613 543.68c0 21.44 4.48 42.347 12.907 61.333 1.173 2.56 4.587 3.2 6.613 1.174l207.787-207.68z"
+                    fill="#1296db" p-id="16382"></path>
+                <path
+                    d="M180.907 569.813a30.597 30.597 0 0 0-8.96 21.654v246.08c0 57.92 46.933 104.853 104.853 104.853h110.187c11.093 0 20.16-8.96 20.16-20.16V684.267c0-12.16 15.04-17.6 25.813-17.6h162.453c12.374 0 25.814 6.72 25.814 17.6V922.24c0 11.093 8.96 20.16 20.16 20.16h110.186c57.92 0 104.854-47.04 104.854-104.853v-246.08c0-8.107-3.2-15.894-8.96-21.654l-320.534-320.32a18.091 18.091 0 0 0-25.706 0l-320.32 320.32z"
+                    fill="#1296db" p-id="16383"></path>
+            </svg>
+        </Tray>
+        <Tray id="chat" @checked="onChatChecked">
+            <svg t="1704036985190" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="25616" width="1em" height="1em">
+                <path
+                    d="M511.3 98.2c-230.8 1-415.3 188.2-413 419 0.7 67.2 17.3 130.7 46.3 186.6l-36.1 191.4c-2.4 12.5 8.6 23.5 21.2 21.1l190.4-36c57.5 30.3 123 47.5 192.5 47.6C741.7 928.3 927 744.2 928 515c1-230.6-186.1-417.8-416.7-416.8z m0.7 477.9c0 17.5-14.3 31.9-31.9 31.9H351.9c-17.5 0-31.9-14.3-31.9-31.9 0-17.5 14.3-31.9 31.9-31.9h128.2c17.6 0 31.9 14.4 31.9 31.9z m192.1-127.9c0 17.6-14.4 32-32 32h-320c-17.6 0-32-14.4-32-32s14.4-32 32-32h320.1c17.5 0 31.9 14.4 31.9 32z"
+                    fill="#1296db" p-id="25617"></path>
+            </svg>
+        </Tray>
+        <Tray id="album" @checked="onAlbumChecked">
+            <svg t="1704041389286" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="6144" width="1em" height="1em">
+                <path
+                    d="M842.688 128 181.312 128C116.64 128 64 180.64 64 245.312l0 533.376C64 843.36 116.64 896 181.312 896l661.376 0C907.36 896 960 843.36 960 778.688L960 245.312C960 180.64 907.36 128 842.688 128zM288 288c35.36 0 64 28.64 64 64s-28.64 64-64 64c-35.328 0-64-28.64-64-64S252.672 288 288 288zM832 736c0 17.696-14.304 31.488-32 31.488L225.92 768c-0.128 0-0.224 0-0.352 0-10.08 0-19.616-4.288-25.664-12.384-6.112-8.192-7.936-18.56-4.896-28.352 2.304-7.488 58.272-183.552 180.064-183.552 38.08 0.896 67.424 9.824 95.776 18.336 35.712 10.72 70.528 19.936 109.664 13.76 20.448-3.296 28.896-23.808 43.328-69.952 19.04-60.8 47.808-152.736 174.656-152.736 17.536 0 31.776 14.08 32 31.616L832 511.616 832 736z"
+                    fill="#1296db" p-id="6145"></path>
+            </svg>
+        </Tray>
+        <Tray id="setting" @checked="onSettingChecked">
+            <svg t="1704036908850" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="20914" width="1em" height="1em">
+                <path
+                    d="M922.88 472a98.24 98.24 0 0 1-80.96-64l-9.92-26.88a98.24 98.24 0 0 1 18.88-100.48 77.44 77.44 0 0 0-4.48-108.48 464.32 464.32 0 0 0-47.36-39.04 77.44 77.44 0 0 0-107.52 16.96 98.24 98.24 0 0 1-96 38.72l-29.76-4.8a98.24 98.24 0 0 1-77.76-66.56 77.44 77.44 0 0 0-96-50.24 464.32 464.32 0 0 0-57.28 22.08A77.44 77.44 0 0 0 295.68 192a98.24 98.24 0 0 1-14.08 100.48l-19.2 23.36a98.24 98.24 0 0 1-96 33.92 77.44 77.44 0 0 0-91.52 58.24q-3.52 15.04-6.08 32t-3.84 32a77.44 77.44 0 0 0 68.8 83.84 98.24 98.24 0 0 1 80.96 64l10.88 28.16a98.24 98.24 0 0 1-18.88 100.48 76.16 76.16 0 0 0 4.48 106.56 464.32 464.32 0 0 0 48.32 40 77.44 77.44 0 0 0 107.52-16.96 98.24 98.24 0 0 1 96-38.72l29.76 4.8a98.24 98.24 0 0 1 77.76 66.56 77.44 77.44 0 0 0 96 50.24 464.32 464.32 0 0 0 57.28-22.08 77.44 77.44 0 0 0 38.4-101.44 98.24 98.24 0 0 1 13.76-101.44l19.2-23.36a98.24 98.24 0 0 1 96-33.92 77.44 77.44 0 0 0 91.52-58.24q3.52-15.04 6.08-32t3.84-32a77.44 77.44 0 0 0-69.76-84.48z m-265.6 58.56a130.56 130.56 0 1 1-108.16-149.76 130.56 130.56 0 0 1 108.48 150.08z"
+                    fill="#1296db" p-id="20915"></path>
+            </svg>
+        </Tray>
+        <Tray id="info" @checked="onInfoChecked">
+        </Tray>
     </div>
 </template>
 
 <style lang="less" scoped>
-.parent {
-    width: 100%;
+@import '../../common.less';
+
+.bar-root-vertical {
+    width: 64px;
+    height: 100%;
+    left: 0px;
+    flex-direction: column;
+    justify-content: start;
+    padding-top: 12px;
+}
+
+.bar-root-horizontal {
     height: 64px;
-    display: flex;
+    width: 100%;
+    bottom: 0px;
+    flex-direction: row;
     justify-content: center;
+}
+
+.bar-root {
+    display: flex;
     align-items: center;
     position: fixed;
-    bottom: 0px;
     z-index: 99;
-}
+    backdrop-filter: blur(10px);
+    background-color: @bg-color-light-global;
 
-.child {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform-style: preserve-3d;
-    transition: all 0.5s ease-in-out;
-    border-radius: 50%;
-    margin: 0 5px;
-}
+    .bar-item {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform-style: preserve-3d;
+        transition: all 0.5s ease-in-out;
+        border-radius: 50%;
 
-.child:hover {
-    background-color: #fff;
-    background-position: -100px 100px, -100px 100px;
-    transform: rotate3d(0.5, 1, 0, 30deg);
-    transform: perspective(180px) rotateX(60deg) translateY(2px);
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
-}
+        .icon-box {
+            border: none;
+            background-color: transparent;
+            font-size: 20px;
+            width: inherit;
+            height: inherit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-60deg) translateY(2px);
+            border-radius: 50%;
+        }
+    }
 
-button {
-    border: none;
-    background-color: transparent;
-    font-size: 20px;
-}
+    input[type="radio"] {
+        display: none;
+    }
 
-.button:hover {
-    width: inherit;
-    height: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-35deg) translateY(2px);
-    border-radius: 50%;
+    input[type="radio"]:checked {
+        &+.bar-item {
+            background-color: @bg-color-light-partial;
+            background-position: -100px 100px, -100px 100px;
+            transform: rotate3d(0.5, 1, 0, 30deg);
+            transform: perspective(180px) rotateX(60deg) translateY(2px);
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+
+            .icon-box {
+                width: inherit;
+                height: inherit;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-60deg) translateY(2px);
+                border-radius: 50%;
+            }
+        }
+    }
 }
 </style>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+import Tray from './tray.vue';
+// import i18n from "@/i18n/index";
+defineProps<{
+    vertical?: boolean
+}>()
+const emits = defineEmits([`homeChecked`, `chatChecked`, `settingChecked`, `albumChecked`, `infoChecked`])
+const onHomeChecked = () => {
+    emits(`homeChecked`)
+}
+const onChatChecked = () => {
+    emits(`chatChecked`)
+}
+const onSettingChecked = () => {
+    emits(`settingChecked`)
+}
+const onAlbumChecked = () => {
+    emits(`albumChecked`)
+}
+const onInfoChecked = () => {
+    emits(`infoChecked`)
+}
+</script>

@@ -1,21 +1,32 @@
 <template>
     <div class="display-content">
         <DailyLine />
+        <!-- <Draggable>
+            <div style="width: 300px; height: 300px; "> </div>
+        </Draggable>
+        <Draggable>
+            <div style="width: 300px; height: 300px; background-color: yellow;"> </div>
+        </Draggable> -->
         <!-- <Schedual/> -->
     </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
+@import '../../../common.less';
+
 .display-content::-webkit-scrollbar {
     display: none;
-    /* Chrome Safari */
     scrollbar-width: none;
 }
 
 .display-content {
     scrollbar-width: none;
-    max-height: 100%;
     overflow-y: scroll;
+    position: relative;
+    display: flex;
+    flex: 1;
+    background-color: red;
+    overflow: hidden;
 }
 </style>
 

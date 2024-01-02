@@ -1,12 +1,11 @@
 <template>
     <div class="display-content">
-        <DailyLine />
-        <!-- <Draggable>
+        <Draggable :card-id="layerCards[0].id" :layer="layerCards[0].layer" title="测试1" @top="onTop">
             <div style="width: 300px; height: 300px; "> </div>
         </Draggable>
-        <Draggable>
+        <Draggable :card-id="layerCards[1].id" :layer="layerCards[1].layer" title="测试2" @top="onTop">
             <div style="width: 300px; height: 300px; background-color: yellow;"> </div>
-        </Draggable> -->
+        </Draggable>
         <!-- <Schedual/> -->
     </div>
 </template>
@@ -24,22 +23,47 @@
     overflow-y: scroll;
     position: relative;
     display: flex;
-    flex: 1;
-    background-color: red;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+    background-color: @bg-color-light-global;
 }
 </style>
 
 <script lang="ts" setup>
-import DailyLine from '../../component/dailyline/index.vue';
-import Schedual from '../../component/schedual/index.vue';
-import { ref, onMounted, onBeforeMount } from 'vue';
+import { ref } from 'vue';
+const cards = ['card1', 'card2']
+const layerCards = ref(registerLayerCards(cards));
+console.log(layerCards.value)
 
-import { theme } from 'ant-design-vue';
-const { useToken } = theme;
-const { token } = useToken();
-onMounted(() => {
-    console.log(token)
-})
+const onTop = (ele: string, needTop: boolean) => {
+    layerCards.value.forEach((item) => {
+        if (item.id == ele && needTop) {
+            item.layer = 998
+        } else {
+            item.layer = 'auto'
+        }
+    })
+    console.log(`${JSON.stringify(ele)} on top`)
+}
 
+
+</script>
+
+<script lang="ts">
+interface LayerCard {
+    id: string;
+    layer?: number | 'auto';
+}
+
+function registerLayerCards(arr: string[]): LayerCard[] {
+    let res: LayerCard[] = []
+    arr.forEach((item) => {
+        res.push({
+            id: item,
+            layer: 'auto'
+        })
+    })
+    return res
+}
 </script>

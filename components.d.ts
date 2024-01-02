@@ -7,22 +7,13 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AAvatar: typeof import('ant-design-vue/es')['Avatar']
-    AButton: typeof import('ant-design-vue/es')['Button']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     ADivider: typeof import('ant-design-vue/es')['Divider']
-    AFlex: typeof import('ant-design-vue/es')['Flex']
-    ALayout: typeof import('ant-design-vue/es')['Layout']
-    ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
-    AMenu: typeof import('ant-design-vue/es')['Menu']
-    APopover: typeof import('ant-design-vue/es')['Popover']
     ATag: typeof import('ant-design-vue/es')['Tag']
     ATimeline: typeof import('ant-design-vue/es')['Timeline']
     ATimelineItem: typeof import('ant-design-vue/es')['TimelineItem']
-    ATooltip: typeof import('ant-design-vue/es')['Tooltip']
     Draggable: typeof import('./src/components/card/draggable/index.vue')['default']
     Greet: typeof import('./src/components/Greet.vue')['default']
-    Index2: typeof import('./src/components/navbar/index2.vue')['default']
     Navbar: typeof import('./src/components/navbar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

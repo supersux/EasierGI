@@ -119,9 +119,7 @@
 </style>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
 import Tray from './tray.vue';
-// import i18n from "@/i18n/index";
 defineProps<{
     vertical?: boolean
 }>()

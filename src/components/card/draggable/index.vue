@@ -1,9 +1,10 @@
-
 <template>
-    <div :style="[cardPositionCss, { resize: cardFixed || !contentVisiable ? 'none' : 'both' }]" class="content"
-        :draggable="!cardFixed" ref="cardDraggable" v-if="cardVisiable" @dragstart="dragStart" @dragend="dragEnd"
-        @contextmenu="contextMenu" @click="onclick" @focus="onfocus">
-        <ToolBar title="测试" @minimize="minimize" @save="onSave" @close="closeCard" @affix="fixCard">
+    <div :style="[
+        cardPositionCss,
+        { resize: cardFixed || !contentVisiable ? 'none' : 'both', zIndex: layer || 'auto' }
+    ]" class="content" :draggable="!cardFixed" ref="cardDraggable" v-if="cardVisiable" @dragstart="dragStart"
+        @dragend="dragEnd" @contextmenu="contextMenu">
+        <ToolBar :title=title @minimize="onMinimize" @top="onTop" @close="closeCard" @affix="fixCard">
         </ToolBar>
         <div id="closablebox_content" v-show="contentVisiable">
             <slot></slot>
@@ -12,12 +13,14 @@
 </template>
 
 <style lang="less" scoped>
+@import "../../../common.less";
+
 .content {
     display: flex;
     flex-direction: column;
     position: absolute;
-    border-radius: 12px;
-    background: rgba(217, 217, 217, 0.58);
+    border-radius: @atom-space-double;
+    background-color: rgba(232, 232, 232, 0.68);
     border: 1px solid #fff;
     transition: all 0.5s;
     overflow: hidden;
@@ -38,111 +41,118 @@
 </style>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import ToolBar from './toobar.vue'
-import { computed } from 'vue';
+import { ref, computed } from "vue";
+import ToolBar from "./toobar.vue";
+const props = defineProps<{
+    cardId: string,
+    layer?: number | "auto",
+    title: string
+}>();
+
+const emits = defineEmits([`top`])
 
 const cardPositionCss = computed(() => {
     return {
-        left: storedCss.value.offsetX + 'px',
-        top: storedCss.value.offsetY + 'px',
+        left: storedCss.value.offsetX + "px",
+        top: storedCss.value.offsetY + "px",
         width: storedCss.value.width,
-        height: storedCss.value.height
-    }
-})
+        height: storedCss.value.height,
+    };
+});
 
-const cardDraggable = ref<Element | undefined>(undefined)
-const contentVisiable = ref(true)
-const cardVisiable = ref(true)
-const cardFixed = ref(false)
+const cardDraggable = ref<Element | undefined>(undefined);
+const contentVisiable = ref(true);
+const cardVisiable = ref(true);
+const cardFixed = ref(false);
+const cardNeedTop = ref(false);
 
 // 状态要统一管理，否则会乱序
 const storedCss = ref<Size>({
     offsetX: 20,
     offsetY: 20,
     width: undefined,
-    height: undefined
-})
+    height: undefined,
+});
 
-let startX = 0
-let startY = 0
+let startX = 0;
+let startY = 0;
 
 const dragStart = (ev: DragEvent) => {
     // 记录初始位置
-    startX = ev.clientX
-    startY = ev.clientY
+    startX = ev.clientX;
+    startY = ev.clientY;
     if (ev.dataTransfer) {
-        ev.dataTransfer.dropEffect = "copy"
+        ev.dataTransfer.dropEffect = "copy";
         // ev.dataTransfer.setDragImage()
         // ev.dataTransfer();
     }
-}
+};
 
 const dragEnd = (e: DragEvent) => {
-    storedCss.value.offsetX += e.clientX - startX
-    storedCss.value.offsetY += e.clientY - startY
-    startX = 0
-    startY = 0
-    onSave()
-}
+    storedCss.value.offsetX += e.clientX - startX;
+    storedCss.value.offsetY += e.clientY - startY;
+    startX = 0;
+    startY = 0;
+    onSave();
+};
 
 const contextMenu = (ev: MouseEvent) => {
-    console.log(`contextMenu`)
+    console.log(`contextMenu`);
     ev.preventDefault();
-}
+};
 
-const onclick = () => {
-    console.log(`card is clicked`);
+const onMinimize = (e: boolean) => {
+    console.debug(`card minimize ${e}`);
+    onSave();
 
-}
-
-const onfocus = () => {
-    console.log(`card is onfocus`);
-}
-
-const minimize = (e: boolean) => {
-    console.debug(`card minimize ${e}`)
-    contentVisiable.value = e
     if (e) {
-        cardPositionCss.value.height = storedCss.value.height
+        cardPositionCss.value.height = storedCss.value.height;
     } else {
-        onSave()
-        cardPositionCss.value.height = undefined
+        cardPositionCss.value.height = undefined;
     }
-}
+    contentVisiable.value = e;
+};
 
 const onSave = () => {
-    console.debug(`card saved`)
-    storedCss.value.width = computeSize().width
-    storedCss.value.height = computeSize().height
-}
+    console.debug(`card saved`);
+    storedCss.value.width = computeSize(cardDraggable.value).width;
+    if (contentVisiable.value) {
+        storedCss.value.height = computeSize(cardDraggable.value).height;
+    } else {
+        storedCss.value.height = undefined;
+    }
+};
+
+const onTop = () => {
+    console.debug(`card ${props.cardId} request on top`);
+    cardNeedTop.value = !cardNeedTop.value
+    emits(`top`, props.cardId, cardNeedTop.value)
+};
 
 const closeCard = () => {
-    cardVisiable.value = false
-}
+    cardVisiable.value = false;
+};
 
 const fixCard = (e: boolean) => {
-    console.debug(`card fixed:${e}`)
-    cardFixed.value = e
-    if (contentVisiable.value) {
-        onSave()
-    }
-}
-
-function computeSize() {
-    let ele = cardDraggable.value ? window.getComputedStyle(cardDraggable.value) : undefined
-    return {
-        width: ele?.width,
-        height: ele?.height
-    }
-}
+    console.debug(`card fixed:${e}`);
+    cardFixed.value = e;
+    onSave();
+};
 </script>
 
 <script lang="ts">
 interface Size {
-    offsetX: number,
-    offsetY: number,
-    width: string | undefined
-    height: string | undefined
+    offsetX: number;
+    offsetY: number;
+    width: string | undefined;
+    height: string | undefined;
+}
+
+function computeSize(card: Element | undefined) {
+    let ele = card ? window.getComputedStyle(card) : undefined;
+    return {
+        width: ele?.width,
+        height: ele?.height,
+    };
 }
 </script>

@@ -17,12 +17,12 @@
                         fill="#2c2c2c" p-id="22747"></path>
                 </svg>
             </div>
-            <div class="btn save" @click="saveEv">
-                <svg t="1703960877746" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    p-id="4237" width="200" height="200">
+            <div class="btn top" :class="[isTop ? 'rotate' : '']" @click="topEv">
+                <svg t="1704207423396" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    p-id="4216" width="32" height="32">
                     <path
-                        d="M906.666667 298.666667L725.333333 117.333333c-14.933333-14.933333-32-21.333333-53.333333-21.333333H170.666667C130.133333 96 96 130.133333 96 170.666667v682.666666c0 40.533333 34.133333 74.666667 74.666667 74.666667h682.666666c40.533333 0 74.666667-34.133333 74.666667-74.666667V349.866667c0-19.2-8.533333-38.4-21.333333-51.2zM652.8 864H371.2V648.533333h281.6v215.466667z m211.2-10.666667c0 6.4-4.266667 10.666667-10.666667 10.666667h-140.8V618.666667c0-17.066667-12.8-29.866667-29.866666-29.866667H341.333333c-17.066667 0-29.866667 12.8-29.866666 29.866667v245.333333H170.666667c-6.4 0-10.666667-4.266667-10.666667-10.666667V170.666667c0-6.4 4.266667-10.666667 10.666667-10.666667h140.8V320c0 17.066667 12.8 29.866667 29.866666 29.866667h277.333334c17.066667 0 29.866667-12.8 29.866666-29.866667s-12.8-29.866667-29.866666-29.866667H371.2V160h302.933333c2.133333 0 6.4 2.133333 8.533334 2.133333l179.2 179.2c2.133333 2.133333 2.133333 4.266667 2.133333 8.533334V853.333333z"
-                        fill="#2c2c2c" p-id="4238"></path>
+                        d="M825.568 555.328l-287.392-289.28c-6.368-6.4-14.688-9.472-22.976-9.408-1.12-0.096-2.08-0.64-3.2-0.64-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288V928c0 17.696 14.336 32 32 32s32-14.304 32-32V362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312c12.576-12.448 12.608-32.736 0.128-45.248zM864 192H160c-17.664 0-32-14.336-32-32s14.336-32 32-32h704c17.696 0 32 14.336 32 32s-14.304 32-32 32z"
+                        fill="#2c2c2c" p-id="4217"></path>
                 </svg>
             </div>
             <span class="title">{{ title }}</span>
@@ -64,7 +64,7 @@
         border: none;
         border-radius: 100%;
         text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2);
-        box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.280);
+        box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.28);
     }
 
     .item-box {
@@ -93,14 +93,20 @@
             background-color: #ffbd44;
         }
 
-        .save {
+        .top {
             background-color: #00ca4e;
+            transition:transform 0.75s;
+            transform: rotateX(0deg)
         }
 
         .title {
             font-size: 16px;
         }
 
+        .rotate {
+            transition:transform 0.75s;
+            transform: rotateX(360deg)
+        }
     }
 
     .right-side {
@@ -110,37 +116,38 @@
     .right-side:hover {
         cursor: pointer;
     }
-
 }
 </style>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const isFixed = ref(false);
 const isExpand = ref(true);
+const isTop = ref(false);
 
-withDefaults(defineProps<{
-    title: string
-}>(), {
-    title: '--'
-})
-const emits = defineEmits([`close`, `minimize`, `save`, `affix`])
+withDefaults(
+    defineProps<{
+        title: string;
+    }>(),
+    {
+        title: "--",
+    }
+);
+const emits = defineEmits([`close`, `minimize`, `top`, `affix`]);
 const closeEv = () => {
-    emits(`close`)
-}
+    emits(`close`);
+};
 const minEv = () => {
     isExpand.value = !isExpand.value;
-    emits(`minimize`, isExpand.value)
-}
-const saveEv = () => {
-    emits(`save`)
-}
+    emits(`minimize`, isExpand.value);
+};
+const topEv = () => {
+    isTop.value = !isTop.value;
+    emits(`top`, isTop.value);
+};
 const fixEv = () => {
-    isFixed.value = !isFixed.value
-    emits(`affix`, isFixed.value)
-}
-// const toolbarCss = ref({
-
-// })
+    isFixed.value = !isFixed.value;
+    emits(`affix`, isFixed.value);
+};
 </script>

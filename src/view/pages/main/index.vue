@@ -91,24 +91,32 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import NavBar from '../../../components/navbar/index.vue'
-import router from '@/router'
 
-const isVertival = ref(true)
-router.replace('/home')
+const isVertival = ref(false)
+navTo('/home')
 
 const onHomeChecked = () => {
-    router.replace('/home')
+    navTo('/home')
 }
 const onChatChecked = () => {
-    router.replace('/chat')
+    navTo('/chat')
 }
 const onAlbumChecked = () => {
-    router.replace('/album')
+    navTo('/album')
 }
 const onSettingChecked = () => {
-    router.replace('/setting')
+    navTo('/setting')
 }
 const onInfoChecked = () => {
 
 }
+</script>
+
+<script lang="ts">
+import router from '@/router';
+
+function navTo(path: string) {
+    router.replace(path)
+}
+
 </script>

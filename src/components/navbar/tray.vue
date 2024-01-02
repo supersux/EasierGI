@@ -54,7 +54,6 @@ input[type="radio"]:checked {
             display: flex;
             justify-content: center;
             align-items: center;
-            // transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-60deg) translateY(2px);
             transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-60deg) translateY(2px);
             border-radius: 50%;
         }
@@ -65,9 +64,7 @@ input[type="radio"]:checked {
 <script lang="ts" setup>
 defineProps<{
     id: string,
-    checked?: boolean,
-    icon?: string,
-    path?: string
+    checked?: boolean
 }>()
 
 const emits = defineEmits([`checked`])

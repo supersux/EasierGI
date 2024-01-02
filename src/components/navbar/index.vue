@@ -75,7 +75,7 @@
         justify-content: center;
         align-items: center;
         transform-style: preserve-3d;
-        transition: all 0.5s ease-in-out;
+        transition: all @animation-duration ease-in-out;
         border-radius: 50%;
 
         .icon-box {

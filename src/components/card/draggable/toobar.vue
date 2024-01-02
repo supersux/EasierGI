@@ -10,14 +10,9 @@
                 </svg>
             </div>
             <div class="btn min" @click="minEv">
-                <svg t="1703927035373" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    p-id="22746" width="200" height="200">
-                    <path
-                        d="M853.333333 554.666667H170.666667c-23.466667 0-42.666667-19.2-42.666667-42.666667s19.2-42.666667 42.666667-42.666667h682.666666c23.466667 0 42.666667 19.2 42.666667 42.666667s-19.2 42.666667-42.666667 42.666667z"
-                        fill="#2c2c2c" p-id="22747"></path>
-                </svg>
+                <svg t="1704211982554" class="icon" :class="[isExpand ? 'rotate-180' : 'rotate-0']"  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17476" width="32" height="32"><path d="M512 685.248l-278.624-278.624 45.248-45.248L512 594.752l233.376-233.376 45.248 45.248z" fill="#181818" p-id="17477"></path></svg>
             </div>
-            <div class="btn top" :class="[isTop ? 'rotate' : '']" @click="topEv">
+            <div class="btn top" :class="[isTop ? 'rotate-360' : 'rotate-0']" @click="topEv">
                 <svg t="1704207423396" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     p-id="4216" width="32" height="32">
                     <path
@@ -39,6 +34,7 @@
 </template>
 
 <style lang="less" scoped>
+@import '../../../common.less';
 .toolbar {
     height: 36px;
     display: flex;
@@ -95,16 +91,24 @@
 
         .top {
             background-color: #00ca4e;
-            transition:transform 0.75s;
-            transform: rotateX(0deg)
         }
 
         .title {
             font-size: 16px;
         }
 
-        .rotate {
-            transition:transform 0.75s;
+        .rotate-0 {
+            transition: transform @animation-duration-slower;
+            transform: rotateX(0deg)
+        }
+
+        .rotate-180 {
+            transition: transform @animation-duration-slower;
+            transform: rotateX(180deg)
+        }
+
+        .rotate-360 {
+            transition: transform @animation-duration-slower;
             transform: rotateX(360deg)
         }
     }

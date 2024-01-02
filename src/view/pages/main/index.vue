@@ -46,7 +46,7 @@
 .scale-slide-h-enter-active,
 .scale-slide-h-leave-active {
     position: absolute;
-    transition: all 0.75s ease;
+    transition: all @animation-duration-slower ease;
 }
 
 .scale-slide-h-enter-from {
@@ -69,7 +69,7 @@
 .scale-slide-v-enter-active,
 .scale-slide-v-leave-active {
     position: absolute;
-    transition: all 0.75s ease;
+    transition: all @animation-duration-slower ease;
 }
 
 .scale-slide-v-enter-from {

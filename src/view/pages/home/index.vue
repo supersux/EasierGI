@@ -1,12 +1,17 @@
 <template>
     <div class="display-content">
         <Draggable :card-id="layerCards[0].id" :layer="layerCards[0].layer" title="测试1" @top="onTop">
-            <div style="width: 300px; height: 300px; "> </div>
+            <span>11111111</span>
+            <span>11111111</span>
+            <span>11111111</span>
+            <span>11111111</span>
+            <span>11111111</span>
+            <span>11111111</span>
+            <span>11111111</span>
         </Draggable>
         <Draggable :card-id="layerCards[1].id" :layer="layerCards[1].layer" title="测试2" @top="onTop">
             <div style="width: 300px; height: 300px; background-color: yellow;"> </div>
         </Draggable>
-        <!-- <Schedual/> -->
     </div>
 </template>
 
@@ -25,7 +30,6 @@
     display: flex;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     background-color: @bg-color-light-global;
 }
 </style>
@@ -46,8 +50,6 @@ const onTop = (ele: string, needTop: boolean) => {
     })
     console.log(`${JSON.stringify(ele)} on top`)
 }
-
-
 </script>
 
 <script lang="ts">

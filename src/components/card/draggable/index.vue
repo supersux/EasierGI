@@ -6,8 +6,10 @@
         @dragend="dragEnd" @contextmenu="contextMenu">
         <ToolBar :title=title @minimize="onMinimize" @top="onTop" @close="closeCard" @affix="fixCard">
         </ToolBar>
-        <div id="closablebox_content" v-show="contentVisiable">
-            <slot></slot>
+        <div :class="contentVisiable ? 'closable-content-show' : 'closable-content-hidden'">
+            <div class="closable-content-flex">
+                <slot></slot>
+            </div>
         </div>
     </div>
 </template>
@@ -19,10 +21,10 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    border-radius: @atom-space-double;
+    border-radius: @atom-space-trible;
     background-color: rgba(232, 232, 232, 0.68);
     border: 1px solid #fff;
-    transition: all 0.5s;
+    transition: all @animation-duration;
     overflow: hidden;
 
     &:hover {
@@ -33,10 +35,27 @@
     &:active {
         transform: scale(1);
     }
-}
 
-#closablebox_content {
-    display: flex;
+    .closable-content {
+        display: grid;
+        transition: @animation-duration;
+    }
+
+    .closable-content-show {
+        .closable-content();
+        grid-template-rows: 1fr;
+    }
+
+    .closable-content-hidden {
+        .closable-content();
+        grid-template-rows: 0fr;
+    }
+
+    .closable-content-flex {
+        display: flex;
+        min-height: 0;
+        flex-direction: column;
+    }
 }
 </style>
 

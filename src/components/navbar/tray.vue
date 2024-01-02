@@ -19,7 +19,7 @@
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
-    transition: all 0.5s ease-in-out;
+    transition: all @animation-duration ease-in-out;
     border-radius: 50%;
 
     .icon-box {
@@ -42,7 +42,7 @@ input[type="radio"] {
 
 input[type="radio"]:checked {
     &+.bar-item {
-        background-color: @bg-color-light-partial;
+        background-color: @bg-color-light-global;
         background-position: -100px 100px, -100px 100px;
         transform: rotate3d(0.5, 1, 0, 30deg);
         transform: perspective(180px) rotateX(60deg) translateY(2px);

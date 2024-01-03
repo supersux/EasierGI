@@ -1,12 +1,13 @@
 <template>
     <div :class="['main', isVertival ? 'main-v' : 'main-h']">
-        <div class="place-v" v-if="isVertival"></div>
+        <!-- just place holder for navbar -->
+        <div v-if="isVertival"></div>
         <router-view v-slot="{ Component }">
             <transition :name="isVertival ? 'scale-slide-v' : 'scale-slide-h'">
                 <component :is="Component" />
             </transition>
         </router-view>
-        <div class="place-h" v-if="!isVertival"></div>
+        <div v-if="!isVertival"></div>
         <NavBar :vertical="isVertival" class="nav-bar" @home-checked="onHomeChecked" @chat-checked="onChatChecked"
             @album-checked="onAlbumChecked" @setting-checked="onSettingChecked" @info-checked="onInfoChecked" />
     </div>
@@ -17,75 +18,64 @@
 
 .main {
     position: relative;
-    display: flex;
-    background-color: @bg-color-light-global;
+    display: grid;
+    background-color: red;
     width: 100%;
     height: 100%;
     overflow: hidden;
 
-    .place-v {
-        width: 64px;
-        height: 100%;
+    .scale-slide-h-enter-active,
+    .scale-slide-h-leave-active {
+        position: absolute;
+        transition: all @animation-duration-slower ease;
     }
 
-    .place-h {
-        width: 100%;
-        height: 64px;
+    .scale-slide-h-enter-from {
+        left: -100%;
     }
 
+    .scale-slide-h-enter-to {
+        left: 0%;
+    }
+
+    .scale-slide-h-leave-from {
+        transform: scale(1);
+    }
+
+    .scale-slide-h-leave-to {
+        transform: scale(0.8);
+    }
+
+
+    .scale-slide-v-enter-active,
+    .scale-slide-v-leave-active {
+        position: absolute;
+        transition: all @animation-duration-slower ease;
+    }
+
+    .scale-slide-v-enter-from {
+        top: 100%;
+    }
+
+    .scale-slide-v-enter-to {
+        top: 0%;
+    }
+
+    .scale-slide-v-leave-from {
+        transform: scale(1);
+    }
+
+    .scale-slide-v-leave-to {
+        transform: scale(0.8);
+    }
 }
 
 .main-v {
-    flex-direction: row;
+    grid-template-columns: 64px 1fr;
 }
 
 .main-h {
-    flex-direction: column;
-}
-
-.scale-slide-h-enter-active,
-.scale-slide-h-leave-active {
-    position: absolute;
-    transition: all @animation-duration-slower ease;
-}
-
-.scale-slide-h-enter-from {
-    left: -100%;
-}
-
-.scale-slide-h-enter-to {
-    left: 0%;
-}
-
-.scale-slide-h-leave-from {
-    transform: scale(1);
-}
-
-.scale-slide-h-leave-to {
-    transform: scale(0.8);
-}
-
-
-.scale-slide-v-enter-active,
-.scale-slide-v-leave-active {
-    position: absolute;
-    transition: all @animation-duration-slower ease;
-}
-
-.scale-slide-v-enter-from {
-    top: 100%;
-}
-
-.scale-slide-v-enter-to {
-    top: 0%;
-}
-
-.scale-slide-v-leave-from {
-    transform: scale(1);
-}
-
-.scale-slide-v-leave-to {
-    transform: scale(0.8);
+    grid-template-rows: 1fr 64px;
 }
 </style>
 <script lang="ts" setup>

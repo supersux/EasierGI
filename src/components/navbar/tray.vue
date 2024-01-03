@@ -42,7 +42,7 @@ input[type="radio"] {
 
 input[type="radio"]:checked {
     &+.bar-item {
-        background-color: @bg-color-light-global;
+        background-color: @bg-color-light-partial;
         background-position: -100px 100px, -100px 100px;
         transform: rotate3d(0.5, 1, 0, 30deg);
         transform: perspective(180px) rotateX(60deg) translateY(2px);

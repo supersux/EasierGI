@@ -64,7 +64,7 @@
     display: flex;
     align-items: center;
     position: fixed;
-    z-index: 99;
+    z-index: @z-index-max;
     backdrop-filter: blur(10px);
     background-color: @bg-color-light-global;
 

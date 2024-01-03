@@ -2,9 +2,9 @@
     <div :style="[
         cardPositionCss,
         { resize: cardFixed || !contentVisiable ? 'none' : 'both', zIndex: layer || 'auto' }
-    ]" class="content" :draggable="!cardFixed" ref="cardDraggable" v-if="cardVisiable" @dragstart="dragStart"
-        @dragend="dragEnd" @contextmenu="contextMenu">
-        <ToolBar :title=title @minimize="onMinimize" @top="onTop" @close="closeCard" @affix="fixCard">
+    ]" class="content" :draggable="!cardFixed" ref="cardDraggable" v-if="cardVisiable" @dragstart="onDragStart"
+        @dragend="onDragEnd" @contextmenu="onContextMenu">
+        <ToolBar :title=title @minimize="onMinimize" @top="onTop" @close="onClose" @affix="onFixed">
         </ToolBar>
         <div :class="contentVisiable ? 'closable-content-show' : 'closable-content-hidden'">
             <div class="closable-content-flex">
@@ -22,8 +22,8 @@
     flex-direction: column;
     position: absolute;
     border-radius: @atom-space-trible;
-    background-color: rgba(232, 232, 232, 0.68);
-    border: 1px solid #fff;
+    background-color: @bg-card-translucent;
+    border: 1px solid @border-color-card;
     transition: all @animation-duration;
     overflow: hidden;
 
@@ -96,18 +96,14 @@ const storedCss = ref<Size>({
 let startX = 0;
 let startY = 0;
 
-const dragStart = (ev: DragEvent) => {
-    // 记录初始位置
+const onDragStart = (ev: DragEvent) => {
+    console.debug(`card ${props.cardId} drag start`);
     startX = ev.clientX;
     startY = ev.clientY;
-    if (ev.dataTransfer) {
-        ev.dataTransfer.dropEffect = "copy";
-        // ev.dataTransfer.setDragImage()
-        // ev.dataTransfer();
-    }
 };
 
-const dragEnd = (e: DragEvent) => {
+const onDragEnd = (e: DragEvent) => {
+    console.debug(`card ${props.cardId} drag end`);
     storedCss.value.offsetX += e.clientX - startX;
     storedCss.value.offsetY += e.clientY - startY;
     startX = 0;
@@ -115,13 +111,13 @@ const dragEnd = (e: DragEvent) => {
     onSave();
 };
 
-const contextMenu = (ev: MouseEvent) => {
-    console.log(`contextMenu`);
+const onContextMenu = (ev: MouseEvent) => {
+    console.debug(`card ${props.cardId} onContextMenu`);
     ev.preventDefault();
 };
 
 const onMinimize = (e: boolean) => {
-    console.debug(`card minimize ${e}`);
+    console.debug(`card ${props.cardId} collapse ${e}`);
     onSave();
 
     if (e) {
@@ -148,12 +144,13 @@ const onTop = () => {
     emits(`top`, props.cardId, cardNeedTop.value)
 };
 
-const closeCard = () => {
+const onClose = () => {
+    console.debug(`card ${props.cardId} close`);
     cardVisiable.value = false;
 };
 
-const fixCard = (e: boolean) => {
-    console.debug(`card fixed:${e}`);
+const onFixed = (e: boolean) => {
+    console.debug(`card ${props.cardId} fixed ${e}`);
     cardFixed.value = e;
     onSave();
 };

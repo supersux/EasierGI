@@ -9,7 +9,8 @@ axios.defaults.baseURL = import.meta.env.VITE_API_DOMAIN;
 axios.interceptors.request.use(
   (config) => {
     //'Content-Type':'application/x-www-form-urlencoded',   // 传参方式表单
-    config.headers["Content-Type"] = 'application/x-www-form-urlencoded; charset=UTF-8';
+    config.headers["Content-Type"] =
+      "application/x-www-form-urlencoded; charset=UTF-8";
     return config;
   },
   (error) => {

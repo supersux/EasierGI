@@ -8,8 +8,8 @@
             </transition>
         </router-view>
         <div v-if="!isVertival"></div>
-        <NavBar :vertical="isVertival" class="nav-bar" @home-checked="onHomeChecked" @chat-checked="onChatChecked"
-            @album-checked="onAlbumChecked" @setting-checked="onSettingChecked" @info-checked="onInfoChecked" />
+        <NavBar data-tauri-drag-region :vertical="isVertival" class="nav-bar" @home-checked="onHomeChecked" @chat-checked="onChatChecked"
+            @album-checked="onAblumChecked" @setting-checked="onSettingChecked" @info-checked="onInfoChecked" />
     </div>
 </template>
 
@@ -19,15 +19,17 @@
 .main {
     position: relative;
     display: grid;
-    background-color: red;
+    background-color: @bg-color-light-global;
     width: 100%;
     height: 100%;
+    // background-image: url('https://pic2.zhimg.com/80/v2-5c7a5b4074acaa7dc6891b7091d82b3d_720w.webp');
+    // background-size: cover;
     overflow: hidden;
 
     .scale-slide-h-enter-active,
     .scale-slide-h-leave-active {
         position: absolute;
-        transition: all @animation-duration-slower ease;
+        transition: all @animation-duration-slower ease-in-out;
     }
 
     .scale-slide-h-enter-from {
@@ -40,10 +42,12 @@
 
     .scale-slide-h-leave-from {
         transform: scale(1);
+        opacity: 1;
     }
 
     .scale-slide-h-leave-to {
         transform: scale(0.8);
+        opacity: 0;
     }
 
 
@@ -91,14 +95,14 @@ const onHomeChecked = () => {
 const onChatChecked = () => {
     navTo('/chat')
 }
-const onAlbumChecked = () => {
-    navTo('/album')
+const onAblumChecked = () => {
+    navTo('/ablum')
 }
 const onSettingChecked = () => {
     navTo('/setting')
 }
 const onInfoChecked = () => {
-
+    navTo('/about')
 }
 </script>
 
@@ -106,6 +110,7 @@ const onInfoChecked = () => {
 import router from '@/router';
 
 function navTo(path: string) {
+    console.debug(`navigate to ${path}`)
     router.replace(path)
 }
 

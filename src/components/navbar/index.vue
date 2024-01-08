@@ -65,8 +65,7 @@
     align-items: center;
     position: fixed;
     z-index: @z-index-max;
-    backdrop-filter: blur(10px);
-    background-color: @bg-color-light-global;
+    background: @bg-color-light-global;
 
     .bar-item {
         width: 50px;

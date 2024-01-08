@@ -16,10 +16,10 @@
   overflow-y: scroll;
   position: relative;
   display: flex;
-  background-color: @bg-color-light-global;
+  flex-direction: column;
+  // background-color: @bg-color-light-global;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 </style>
 
@@ -30,7 +30,7 @@ const list = ref<Array<any>>([]);
 onMounted(() => {
   console.log(`chat onMounted`);
   console.log(root);
-  list.value = new Array(10);
+  list.value = new Array(30);
 });
 
 // let scroll = new BScroll(wrapper)

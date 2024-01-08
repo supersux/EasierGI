@@ -59,12 +59,28 @@
     },
     "windows": [
       {
+        "label": "main",
+        "url": "/windows/main.html",
         "fullscreen": false,
         "resizable": true,
         "title": "EasierGI ∙ 0.0.1",
         "minWidth": 800,
         "minHeight": 600,
-        "fileDropEnabled": false
+        "fileDropEnabled": false,
+        "decorations": true,
+        "visible": true
+      },
+      {
+        "label": "login",
+        "url": "/windows/login.html",
+        "resizable": false,
+        "title": "login",
+        "width": 280,
+        "height": 400,
+        "center": false,
+        "fileDropEnabled": false,
+        "decorations": false,
+        "transparent": true
       }
     ]
   }
